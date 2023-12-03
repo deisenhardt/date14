@@ -1,5 +1,6 @@
 # date14
 
+
 with GNU date, date -d allows query such as 
 
 `date -d "14 days ago"`
