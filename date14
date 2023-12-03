@@ -246,6 +246,21 @@ month_test()
   fi
 }
 
+test_date()
+{
+  if [ "$diffyear" -eq 1 ]; then
+    year_test $@
+  fi
+
+  if [ "$diffmonth" -eq 1 ]; then
+    month_test $@
+  else
+    # date should be within 14 days
+    #echo "true 5"
+    exit 0
+  fi
+}
+
 ##############################################################
 # main program ###############################################
 ##############################################################
@@ -256,17 +271,7 @@ input_prep $@
 
 time_differences $@
 
-if [ "$diffyear" -eq 1 ]; then
-  year_test $@
-fi
-
-if [ "$diffmonth" -eq 1 ]; then
-  month_test $@
-else
-  # date should be within 14 days
-  #echo "true 5"
-  exit 0
-fi
+test_date $@
 
 ##############################################################
 # End ########################################################
